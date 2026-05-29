@@ -8,18 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    public function handle(
-        Request $request,
-        Closure $next,
-        string $role
-    ): Response {
-
-        if (!$request->user()) {
-            abort(401);
-        }
-
-        if ($request->user()->role !== $role) {
-            abort(403);
+    public function handle(Request $request, Closure $next, string ...$roles): Response
+    {
+        if (! $request->user() || ! in_array($request->user()->role, $roles)) {
+            abort(403, 'Kamu tidak memiliki akses ke halaman ini.');
         }
 
         return $next($request);
