@@ -27,11 +27,10 @@ return new class extends Migration
             $table->string('kategori');
 
             $table->enum('status', [
-                'draft',
-                'diajukan',
+                'pending',
                 'disetujui',
                 'ditolak'
-            ])->default('draft');
+            ])->default('pending');
 
             $table->foreignId('created_by')
                 ->constrained('users')

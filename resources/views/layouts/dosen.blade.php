@@ -38,7 +38,7 @@
           Dashboard
         </a>
 
-        <a href="{{ route('dosen.kegiatan.index') }}"
+        <a href="{{ route('dosen.monitoring') }}"
           class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-800 transition">
 
           Monitoring Kegiatan

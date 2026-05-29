@@ -41,4 +41,9 @@ class User extends Authenticatable
             ->withPivot('kehadiran', 'jam_kontribusi')
             ->withTimestamps();
     }
+
+    public function kegiatans()
+    {
+        return $this->hasMany(Kegiatan::class, 'created_by');
+    }
 }
