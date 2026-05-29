@@ -5,13 +5,16 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Dokumentasi extends Model
 {
-     protected $fillable = [
+    protected $fillable = [
         'kegiatan_id',
+        'file_path',
+        'caption',
         'uploaded_by',
         'judul',
         'deskripsi',
