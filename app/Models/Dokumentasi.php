@@ -10,16 +10,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokumentasi extends Model
 {
-    protected $fillable = [
+     protected $fillable = [
         'kegiatan_id',
-        'file_path',
-        'deskripsi',
         'uploaded_by',
+        'judul',
+        'deskripsi',
+        'file_path',
+        'file_name',
+        'file_type',
+        'mime_type',
+        'file_size',
     ];
 
     public function kegiatan()
     {
-        return $this->belongsTo(Kegiatan::class);
+        return $this->belongsTo(Schedule::class, 'kegiatan_id');
     }
 
     public function uploader()
