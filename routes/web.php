@@ -13,6 +13,11 @@ use App\Http\Controllers\Dosen\MonitoringKegiatanController;
 use App\Http\Controllers\Dosen\DosenDashboardController;
 use App\Http\Controllers\Dosen\MahasiswaController;
 use App\Http\Controllers\Dosen\DokumentasiController as DosenDokumentasiController;
+use App\Models\Kegiatan;
+use App\Models\Schedule;
+use App\Http\Controllers\Mahasiswa\KegiatanController as MahasiswaKegiatanController;
+use App\Http\Controllers\Mahasiswa\JadwalLabController;
+use App\Http\Controllers\Mahasiswa\MahasiswaDashboardController;
 
 Route::get('/', function () {
     if (! Auth::check()) {
@@ -48,9 +53,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::middleware(['auth', 'verified', 'role:mahasiswa'])->group(function () {
-        Route::get('/mahasiswa/dashboard', function () {
-            return view('mahasiswa.dashboard');
-        })->name('mahasiswa.dashboard');
+        Route::get('/mahasiswa/dashboard', [MahasiswaDashboardController::class, 'index'])->name('mahasiswa.dashboard');
+        Route::get('/mahasiswa/kegiatan', [MahasiswaKegiatanController::class, 'index'])->name('mahasiswa.kegiatan.index');
+        Route::get('/mahasiswa/kegiatan/create', [MahasiswaKegiatanController::class, 'create'])->name('mahasiswa.kegiatan.create');
+        Route::post('/mahasiswa/kegiatan', [MahasiswaKegiatanController::class, 'store'])->name('mahasiswa.kegiatan.store');
+        Route::get('/jadwal', [JadwalLabController::class, 'index'])->name('mahasiswa.jadwal.index');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
