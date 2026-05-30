@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ScheduleCategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DokumentasiController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,7 @@ use App\Http\Controllers\Dosen\KegiatanApprovalController;
 use App\Http\Controllers\Dosen\MonitoringKegiatanController;
 use App\Http\Controllers\Dosen\DosenDashboardController;
 use App\Http\Controllers\Dosen\MahasiswaController;
-use App\Http\Controllers\Dosen\DokumentasiController;
+use App\Http\Controllers\Dosen\DokumentasiController as DosenDokumentasiController;
 
 Route::get('/', function () {
     if (! Auth::check()) {
@@ -117,10 +118,10 @@ Route::middleware(['auth', 'role:dosen'])
         |--------------------------------------------------------------------------
         */
 
-        Route::get('/dokumentasi', [DokumentasiController::class, 'index'])
+        Route::get('/dokumentasi', [DosenDokumentasiController::class, 'index'])
             ->name('dokumentasi');
 
-        Route::post('/dokumentasi', [DokumentasiController::class, 'store'])
+        Route::post('/dokumentasi', [DosenDokumentasiController::class, 'store'])
             ->name('dokumentasi.store');
     });
 require __DIR__ . '/auth.php';
