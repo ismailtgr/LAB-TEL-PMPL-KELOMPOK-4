@@ -18,6 +18,7 @@ use App\Models\Schedule;
 use App\Http\Controllers\Mahasiswa\KegiatanController as MahasiswaKegiatanController;
 use App\Http\Controllers\Mahasiswa\JadwalLabController;
 use App\Http\Controllers\Mahasiswa\MahasiswaDashboardController;
+use App\Http\Controllers\Mahasiswa\DokumentasiController as MahasiswaDokumentasiController;
 
 Route::get('/', function () {
     if (! Auth::check()) {
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/mahasiswa/kegiatan/create', [MahasiswaKegiatanController::class, 'create'])->name('mahasiswa.kegiatan.create');
         Route::post('/mahasiswa/kegiatan', [MahasiswaKegiatanController::class, 'store'])->name('mahasiswa.kegiatan.store');
         Route::get('/jadwal', [JadwalLabController::class, 'index'])->name('mahasiswa.jadwal.index');
+        Route::get('/mahasiswa/dokumentasi', [MahasiswaDokumentasiController::class, 'index'])->name('mahasiswa.dokumentasi.index');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

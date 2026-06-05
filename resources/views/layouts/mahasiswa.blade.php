@@ -21,9 +21,6 @@
             <div class="px-6 py-7">
                 <h1 class="text-xl font-semibold leading-tight">Lab TEL</h1>
                 <p class="mt-1 text-xs text-white/70">FILKOM UB</p>
-                <span class="mt-2 inline-block rounded bg-blue-500/30 px-2 py-0.5 text-[10px] font-medium tracking-wide text-blue-200 uppercase">
-                    Mahasiswa Mode
-                </span>
             </div>
 
             <nav class="mt-2 flex-1 space-y-2 px-4">
@@ -55,16 +52,6 @@
                             : 'text-white/80 hover:bg-white/10 hover:text-white' }}">
                     <span>📅</span>
                     <span>Jadwal Lab</span>
-                </a>
-
-                <a
-                    href="#" 
-                    class="flex items-center gap-3 rounded-md px-4 py-3 text-sm font-medium transition
-                        {{ request()->routeIs('mahasiswa.dokumen.*')
-                            ? 'bg-white/20 text-white'
-                            : 'text-white/80 hover:bg-white/10 hover:text-white' }}">
-                    <span>📂</span>
-                    <span>Dokumen & Modul</span>
                 </a>
             </nav>
 

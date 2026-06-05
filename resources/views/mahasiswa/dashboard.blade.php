@@ -108,4 +108,44 @@
         </div>
     </section>
 </div>
+<section class="mt-7 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+    <div class="border-b border-gray-200 px-6 py-5 flex justify-between items-center">
+        <div>
+            <h2 class="text-lg font-semibold text-gray-900">Dokumentasi Kegiatan Lab</h2>
+            <p class="text-sm text-gray-500 mt-1">Galeri foto kegiatan yang telah berlangsung di laboratorium.</p>
+        </div>
+        <a href="{{ route('mahasiswa.dokumentasi.index') }}" class="text-sm font-medium text-[#1F2587] hover:underline whitespace-nowrap">
+            Lihat Semua
+        </a>
+    </div>
+
+    <div class="p-6 bg-gray-50">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            @forelse ($recentDokumentasi as $dok)
+            <div class="group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition">
+                <div class="aspect-w-16 aspect-h-10 bg-gray-200 overflow-hidden">
+                    @if($dok->file_path)
+                    <img src="{{ asset('storage/' . $dok->file_path) }}" alt="Dokumentasi" class="h-40 w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    @else
+                    <div class="h-40 w-full flex items-center justify-center text-gray-400 bg-gray-100">
+                        📷 No Image
+                    </div>
+                    @endif
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 line-clamp-1">{{ $dok->judul ?? 'Dokumentasi Lab' }}</h3>
+                    <p class="mt-1 text-xs text-gray-500 line-clamp-2">{{ $dok->keterangan ?? $dok->deskripsi ?? 'Tidak ada keterangan.' }}</p>
+                    <p class="mt-3 text-xs text-gray-400">📅 {{ $dok->created_at->translatedFormat('d M Y') }}</p>
+                </div>
+            </div>
+            @empty
+            <div class="col-span-full py-8 text-center text-sm text-gray-500">
+                Belum ada dokumentasi kegiatan yang diunggah.
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+</div>
+
 @endsection

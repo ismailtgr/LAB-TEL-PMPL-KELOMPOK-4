@@ -13,6 +13,7 @@ class Dokumentasi extends Model
 {
     protected $fillable = [
         'kegiatan_id',
+        'judul',
         'file_path',
         'caption',
         'uploaded_by',

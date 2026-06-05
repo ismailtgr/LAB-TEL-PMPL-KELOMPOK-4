@@ -7,6 +7,7 @@ use App\Models\Kegiatan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Dokumentasi;
 
 class MahasiswaDashboardController extends Controller
 {
@@ -33,13 +34,16 @@ class MahasiswaDashboardController extends Controller
             ->take(3)
             ->get();
 
+        $recentDokumentasi = Dokumentasi::latest()->take(4)->get();
+
         // Kirim 5 variabel ini ke view dashboard
         return view('mahasiswa.dashboard', compact(
             'totalPengajuan',
             'pendingApproval',
             'disetujui',
             'myKegiatans',
-            'jadwalMendatang'
+            'jadwalMendatang',
+            'recentDokumentasi'
         ));
     }
 }

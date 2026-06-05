@@ -33,12 +33,27 @@ class DokumentasiController extends Controller
             'caption' => 'nullable|string|max:255',
         ]);
 
+        $kegiatan = Kegiatan::findOrFail($request->kegiatan_id);
+        $judulOtomatis = $kegiatan->nama_kegiatan ?? $kegiatan->judul ?? $kegiatan->title ?? 'Dokumentasi Kegiatan';
+
+        $file = $request->file('foto');
+
         $path = $request->file('foto')->store('dokumentasi', 'public');
+
+        $fileName = $file->getClientOriginalName();       // Contoh: kegiatan.png
+        $fileType = $file->getClientOriginalExtension();  // Contoh: png
+        $mimeType = $file->getMimeType();                 // Contoh: image/png
+        $fileSize = $file->getSize();
 
         Dokumentasi::create([
             'kegiatan_id' => $request->kegiatan_id,
+            'judul' => $judulOtomatis,
             'file_path' => $path,
-            'caption' => $request->caption,
+            'file_name' => $fileName,
+            'file_type' => $fileType,
+            'mime_type' => $mimeType,
+            'file_size' => $fileSize,
+            'deskripsi' => $request->caption,
             'uploaded_by' => Auth::id(),
         ]);
 
