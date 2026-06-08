@@ -7,31 +7,43 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
-        Schema::table('dokumentasis', function (Blueprint $table) {
-            $table->dropIndex('dokumentasis_kegiatan_id_foreign');
-        });
+{
+    Schema::table('dokumentasis', function (Blueprint $table) {
 
-        Schema::table('dokumentasis', function (Blueprint $table) {
-            $table->unsignedBigInteger('kegiatan_id')->nullable()->change();
+        // Hapus foreign key lama
+        $table->dropForeign(['kegiatan_id']);
 
-            $table->foreign('kegiatan_id')
-                ->references('id')
-                ->on('schedules')
-                ->nullOnDelete();
-        });
-    }
+    });
+
+    Schema::table('dokumentasis', function (Blueprint $table) {
+
+        $table->unsignedBigInteger('kegiatan_id')->nullable()->change();
+
+        $table->foreign('kegiatan_id')
+            ->references('id')
+            ->on('schedules')
+            ->nullOnDelete();
+
+    });
+}
 
     public function down(): void
-    {
-        Schema::table('dokumentasis', function (Blueprint $table) {
-            $table->dropForeign(['kegiatan_id']);
-        });
+{
+    Schema::table('dokumentasis', function (Blueprint $table) {
 
-        Schema::table('dokumentasis', function (Blueprint $table) {
-            $table->unsignedBigInteger('kegiatan_id')->nullable(false)->change();
+        $table->dropForeign(['kegiatan_id']);
 
-            $table->index('kegiatan_id', 'dokumentasis_kegiatan_id_foreign');
-        });
-    }
+    });
+
+    Schema::table('dokumentasis', function (Blueprint $table) {
+
+        $table->unsignedBigInteger('kegiatan_id')->nullable(false)->change();
+
+        $table->foreign('kegiatan_id')
+            ->references('id')
+            ->on('kegiatans')
+            ->cascadeOnDelete();
+
+    });
+}
 };

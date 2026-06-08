@@ -32,7 +32,7 @@
         </p>
 
         <h3 class="text-3xl font-bold text-blue-900 mt-2">
-          24
+          {{ $totalKegiatan }}
         </h3>
 
       </div>
@@ -44,7 +44,7 @@
         </p>
 
         <h3 class="text-3xl font-bold text-yellow-500 mt-2">
-          8
+          {{ $pendingApproval }}
         </h3>
 
       </div>
@@ -56,7 +56,7 @@
         </p>
 
         <h3 class="text-3xl font-bold text-green-500 mt-2">
-          15
+          {{ $approved }}
         </h3>
 
       </div>
@@ -68,7 +68,7 @@
         </p>
 
         <h3 class="text-3xl font-bold text-purple-500 mt-2">
-          52
+          {{ $mahasiswa }}
         </h3>
 
       </div>
@@ -89,16 +89,20 @@
       <div class="divide-y">
 
         <!-- Item -->
+        @forelse($pendingKegiatans as $kegiatan)
+
         <div class="p-6 flex items-center justify-between">
 
           <div>
 
             <h4 class="font-semibold text-lg">
-              Workshop Embedded System
+              {{ $kegiatan->judul }}
             </h4>
 
             <p class="text-gray-500 text-sm mt-1">
-              Oleh: Ahmad Rizky • 2026-05-05
+              Oleh: {{ $kegiatan->creator->name ?? '-' }}
+              •
+              {{ $kegiatan->tanggal }}
             </p>
 
           </div>
@@ -112,29 +116,15 @@
 
         </div>
 
-        <!-- Item -->
-        <div class="p-6 flex items-center justify-between">
+        @empty
 
-          <div>
+        <div class="p-6 text-gray-500 text-center">
 
-            <h4 class="font-semibold text-lg">
-              Pelatihan IoT Dasar
-            </h4>
-
-            <p class="text-gray-500 text-sm mt-1">
-              Oleh: Budi Santoso • 2026-05-06
-            </p>
-
-          </div>
-
-          <span
-            class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
-
-            Pending
-
-          </span>
+          Tidak ada kegiatan yang menunggu approval.
 
         </div>
+
+        @endforelse
 
       </div>
 
@@ -171,11 +161,11 @@
           <div class="p-4">
 
             <h3 class="font-bold text-gray-800">
-              {{ $dokumentasi->kegiatan->judul ?? '-' }}
+              {{ $dokumentasi->judul ?? '-' }}
             </h3>
 
             <p class="text-sm text-gray-500 mt-2">
-              {{ $dokumentasi->caption }}
+              {{ $dokumentasi->deskripsi }}
             </p>
 
           </div>

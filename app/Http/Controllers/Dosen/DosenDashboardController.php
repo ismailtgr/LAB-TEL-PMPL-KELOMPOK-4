@@ -20,7 +20,14 @@ class DosenDashboardController extends Controller
         $mahasiswa = User::where('role', 'mahasiswa')->count();
 
         $dokumentasis = Dokumentasi::latest()
+            ->latest()
             ->take(4)
+            ->get();
+
+        $pendingKegiatans = Kegiatan::with('creator')
+            ->where('status', 'pending')
+            ->latest()
+            ->take(5)
             ->get();
 
         return view('dosen.dashboard', compact(
@@ -28,7 +35,8 @@ class DosenDashboardController extends Controller
             'pendingApproval',
             'approved',
             'mahasiswa',
-            'dokumentasis'
+            'dokumentasis',
+            'pendingKegiatans'
         ));
     }
 }
