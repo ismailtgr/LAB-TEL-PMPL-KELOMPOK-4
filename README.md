@@ -1,58 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Lab TEL Activity Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi **Lab TEL Activity Management System** adalah platform berbasis web yang dirancang untuk mengelola seluruh ekosistem kegiatan di Laboratorium TEL. Sistem ini mempermudah mahasiswa dalam mengajukan izin penggunaan lab, membantu dosen dan admin dalam mengelola jadwal, serta menyediakan galeri dokumentasi terintegrasi untuk mengarsipkan berbagai kegiatan laboratorium yang telah selesai dilaksanakan.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 👥 Anggota Kelompok 4 (PMPL)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Berikut adalah kontributor dalam pengembangan sistem ini:
+* **Ismail Tegar Rwatma Bhumi** - `245150601111016`
+* **Hafiidz Rifqiy Syafera** - `245150607111011`
+* **Samuel Aryasatya Widiono** - `245150607111018`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Sistem ini dirancang secara komprehensif untuk mendukung efisiensi operasional laboratorium melalui fitur-fitur berikut:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Sistem Multi-role Authentication**
+   * Pembagian hak akses yang jelas dan aman untuk 3 pengguna utama: **Mahasiswa**, **Dosen**, dan **Admin**.
+2. **Manajemen Kegiatan Knowledge & Riset**
+   * Fasilitas pengajuan dan pengelolaan berbagai aktivitas akademik, proyek penelitian (riset), serta agenda transfer *knowledge* di lingkungan Lab TEL.
+3. **Upload Dokumentasi**
+   * Fitur unggah foto dokumentasi pasca-kegiatan oleh Dosen yang dilengkapi otomatisasi pengisian metadata berkas (nama file asli, tipe file, jenis mime, ukuran berkas, judul kegiatan, dan nama pengunggah).
+4. **Dashboard Monitoring**
+   * Halaman pemantauan visual yang menampilkan status pengajuan, kartu ringkasan kegiatan, jadwal lab mendatang, serta galeri dokumentasi terbaru secara *real-time*.
+5. **Validasi Kegiatan oleh Dosen**
+   * Alur kerja persetujuan (*approval system*) terintegrasi yang memungkinkan Dosen memeriksa, menerima, atau menolak pengajuan kegiatan dari mahasiswa secara langsung.
+6. **Laporan & Statistik**
+   * Penyajian ringkasan data penggunaan laboratorium dalam bentuk angka statistik (Total Pengajuan, *Pending Approval*, dan Kegiatan Disetujui) untuk mempermudah evaluasi aktivitas berkala.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 🛠️ Spesifikasi Teknis (Tech Stack)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Aplikasi ini dibangun menggunakan teknologi modern dengan spesifikasi sebagai berikut:
+* **Framework Backend:** Laravel v13.12.0
+* **Bahasa Pemrograman:** PHP v8.5.0
+* **Frontend Framework:** Laravel Blade + Tailwind CSS
+* **Database Engine:** MySQL v8.0+
 
+---
+
+## 🚀 Panduan Instalasi (Getting Started)
+
+Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi ini di lingkungan lokal (*localhost*) Anda:
+
+### 1. Prasyarat (Prerequisites)
+Pastikan Anda sudah menginstal alat-alat berikut di komputer Anda:
+* PHP >= 8.5.0
+* Composer
+* Node.js & NPM
+* MySQL / XAMPP
+
+### 2. Kloning Repositori
+Jalankan perintah berikut di terminal Anda untuk mengkloning proyek:
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/ismailtgr/LAB-TEL-PMPL-KELOMPOK-4.git
+cd LAB-TEL-PMPL-KELOMPOK-4
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Instalasi Dependensi (Package)
+Instal semua dependensi PHP (Composer) dan JavaScript (NPM) yang dibutuhkan aplikasi:
+```bash
+composer install
+npm install
+```
 
-## Contributing
+### 4. Konfigurasi Environment `(.env)`
+```bash
+cp .env.example .env
+```
+Buka file `.env` yang baru dibuat menggunakan kode editor, lalu sesuaikan bagian konfigurasi database Anda:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=LAB-TEL-PMPL-KELOMPOK-4
+DB_USERNAME=root
+DB_PASSWORD=
+```
+Catatan: Pastikan Anda sudah membuat database kosong bernama LAB-TEL-PMPL-KELOMPOK-4 di phpMyAdmin sebelum melangkah ke tahap berikutnya.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 5. Generate Application Key
+Buat kunci keamanan enkripsi unik untuk aplikasi Anda:
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+### 6. Migrasi Database & Seeding
+Jalankan migrasi untuk membuat seluruh struktur tabel di database beserta data awalnya (jika ada):
+```bash
+php artisan migrate
+# atau jika memiliki seeder data akun contoh:
+php artisan migrate --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 7. Hubungkan Storage Link (Penting untuk Fitur Dokumentasi)
+Langkah ini wajib dijalankan agar foto dokumentasi yang diunggah oleh Dosen dapat diakses secara publik dan muncul di halaman Mahasiswa:
+```bash
+php artisan storage:link
+```
 
-## Security Vulnerabilities
+### 8. Kompilasi Frontend & Jalankan Server
+Jalankan proses compile aset Tailwind CSS dan hidupkan server lokal Laravel secara bersamaan:
+- Di terminal 1 (Jalankan server Laravel):
+```bash
+php artisan serve
+```
+- Di terminal 2 (Jalankan kompilasi Tailwind CSS):
+```bash
+npm run dev
+```
+Buka browser Anda dan akses aplikasi melalui tautan: `http://127.0.0.1:8000`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 📄 Lisensi
+Hak Cipta © 2026 - Kelompok 4 PMPL. Seluruh hak cipta dilindungi undang-undang.
