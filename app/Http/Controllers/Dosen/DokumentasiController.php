@@ -58,7 +58,7 @@ class DokumentasiController extends Controller
         ]);
 
         return redirect()
-            ->route('dosen.dokumentasi')
+            ->route('dosen.dashboard')
             ->with('success', 'Dokumentasi berhasil diupload.');
     }
 }

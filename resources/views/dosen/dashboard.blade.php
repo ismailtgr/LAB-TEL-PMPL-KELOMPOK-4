@@ -9,12 +9,25 @@
   <!-- Main Content -->
   <main class="flex-1 p-8">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Header -->
     <div class="mb-8">
 
       <h2 class="text-4xl font-bold text-gray-800">
         Dashboard Dosen
       </h2>
+
+      @if(session('success'))
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Berhasil!',
+          text: '{{ session('
+          success ') }}',
+          confirmButtonText: 'OK'
+        });
+      </script>
+      @endif
 
       <p class="text-gray-500 mt-2">
         Monitoring kegiatan laboratorium dan approval mahasiswa.
