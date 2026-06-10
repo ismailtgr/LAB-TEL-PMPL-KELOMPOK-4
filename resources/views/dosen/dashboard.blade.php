@@ -22,8 +22,7 @@
         Swal.fire({
           icon: 'success',
           title: 'Berhasil!',
-          text: '{{ session('
-          success ') }}',
+          text: "{{ session('success') }}",
           confirmButtonText: 'OK'
         });
       </script>
@@ -103,38 +102,20 @@
 
         <!-- Item -->
         @forelse($pendingKegiatans as $kegiatan)
-
         <div class="p-6 flex items-center justify-between">
-
           <div>
-
             <h4 class="font-semibold text-lg">
               {{ $kegiatan->judul }}
             </h4>
-
             <p class="text-gray-500 text-sm mt-1">
-              Oleh: {{ $kegiatan->creator->name ?? '-' }}
-              •
-              {{ $kegiatan->tanggal }}
+              {{ $kegiatan->creator->name ?? '-' }} • {{ $kegiatan->tanggal }}
             </p>
-
           </div>
-
-          <span
-            class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
-
-            Pending
-
-          </span>
-
         </div>
-
         @empty
 
-        <div class="p-6 text-gray-500 text-center">
-
+        <div class="p-6 text-center text-gray-500">
           Tidak ada kegiatan yang menunggu approval.
-
         </div>
 
         @endforelse
